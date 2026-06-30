@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <h1>QR <span>Generator</span></h1>
+    <p>Custom bentuk modul, warna, dan download PNG</p>
+  </div>
+
+  <div>
+    <label for="urlInput">URL / Teks</label>
+    <input type="text" id="urlInput" placeholder="https://example.com" />
+  </div>
+
+  <div>
+    <label>Bentuk Modul QR</label>
+    <div class="shape-grid" id="shapePicker">
+
+      <div class="shape-opt selected" data-shape="square">
+        <!-- 3x3 grid titik kotak -->
+        <svg viewBox="0 0 32 32" fill="var(--accent)">
+          <rect x="2" y="2" width="8" height="8" rx="1"/>
+          <rect x="12" y="2" width="8" height="8" rx="1"/>
+          <rect x="22" y="2" width="8" height="8" rx="1"/>
+          <rect x="2" y="12" width="8" height="8" rx="1"/>
+          <rect x="22" y="12" width="8" height="8" rx="1"/>
+          <rect x="2" y="22" width="8" height="8" rx="1"/>
+          <rect x="12" y="22" width="8" height="8" rx="1"/>
+          <rect x="22" y="22" width="8" height="8" rx="1"/>
+        </svg>
+        <span>Kotak</span>
+      </div>
+
+      <div class="shape-opt" data-shape="rounded">
+        <svg viewBox="0 0 32 32" fill="var(--accent)">
+          <rect x="2" y="2" width="8" height="8" rx="3"/>
+          <rect x="12" y="2" width="8" height="8" rx="3"/>
+          <rect x="22" y="2" width="8" height="8" rx="3"/>
+          <rect x="2" y="12" width="8" height="8" rx="3"/>
+          <rect x="22" y="12" width="8" height="8" rx="3"/>
+          <rect x="2" y="22" width="8" height="8" rx="3"/>
+          <rect x="12" y="22" width="8" height="8" rx="3"/>
+          <rect x="22" y="22" width="8" height="8" rx="3"/>
+        </svg>
+        <span>Bulat</span>
+      </div>
+
+      <div class="shape-opt" data-shape="circle">
+        <svg viewBox="0 0 32 32" fill="var(--accent)">
+          <circle cx="6" cy="6" r="4"/>
+          <circle cx="16" cy="6" r="4"/>
+          <circle cx="26" cy="6" r="4"/>
+          <circle cx="6" cy="16" r="4"/>
+          <circle cx="26" cy="16" r="4"/>
+          <circle cx="6" cy="26" r="4"/>
+          <circle cx="16" cy="26" r="4"/>
+          <circle cx="26" cy="26" r="4"/>
+        </svg>
+        <span>Lingkaran</span>
+      </div>
+
+      <div class="shape-opt" data-shape="diamond">
+        <svg viewBox="0 0 32 32" fill="var(--accent)">
+          <polygon points="6,2 10,6 6,10 2,6"/>
+          <polygon points="16,2 20,6 16,10 12,6"/>
+          <polygon points="26,2 30,6 26,10 22,6"/>
+          <polygon points="6,12 10,16 6,20 2,16"/>
+          <polygon points="26,12 30,16 26,20 22,16"/>
+          <polygon points="6,22 10,26 6,30 2,26"/>
+          <polygon points="16,22 20,26 16,30 12,26"/>
+          <polygon points="26,22 30,26 26,30 22,26"/>
+        </svg>
+        <span>Wajik</span>
+      </div>
+
+      <div class="shape-opt" data-shape="star">
+        <svg viewBox="0 0 32 32" fill="var(--accent)">
+          <polygon points="6,2 7,5 10,5 7.5,7 8.5,10 6,8 3.5,10 4.5,7 2,5 5,5"/>
+          <polygon points="16,2 17,5 20,5 17.5,7 18.5,10 16,8 13.5,10 14.5,7 12,5 15,5"/>
+          <polygon points="26,2 27,5 30,5 27.5,7 28.5,10 26,8 23.5,10 24.5,7 22,5 25,5"/>
+          <polygon points="6,18 7,21 10,21 7.5,23 8.5,26 6,24 3.5,26 4.5,23 2,21 5,21"/>
+          <polygon points="26,18 27,21 30,21 27.5,23 28.5,26 26,24 23.5,26 24.5,23 22,21 25,21"/>
+        </svg>
+        <span>Bintang</span>
+      </div>
+
+      <div class="shape-opt" data-shape="cross">
+        <svg viewBox="0 0 32 32" fill="var(--accent)">
+          <rect x="4" y="2" width="4" height="10" rx="1"/>
+          <rect x="2" y="4" width="10" height="4" rx="1"/>
+          <rect x="14" y="2" width="4" height="10" rx="1"/>
+          <rect x="12" y="4" width="10" height="4" rx="1"/>
+          <rect x="24" y="2" width="4" height="10" rx="1"/>
+          <rect x="22" y="4" width="10" height="4" rx="1"/>
+          <rect x="4" y="22" width="4" height="10" rx="1"/>
+          <rect x="2" y="24" width="10" height="4" rx="1"/>
+          <rect x="24" y="22" width="4" height="10" rx="1"/>
+          <rect x="22" y="24" width="10" height="4" rx="1"/>
+        </svg>
+        <span>Salib +</span>
+      </div>
+
+      <div class="shape-opt" data-shape="leaf">
+        <svg viewBox="0 0 32 32" fill="var(--accent)">
+          <path d="M2,2 Q10,2 10,10 Q10,2 2,10 Z"/>
+          <path d="M12,2 Q20,2 20,10 Q20,2 12,10 Z"/>
+          <path d="M22,2 Q30,2 30,10 Q30,2 22,10 Z"/>
+          <path d="M2,12 Q10,12 10,20 Q10,12 2,20 Z"/>
+          <path d="M22,12 Q30,12 30,20 Q30,12 22,20 Z"/>
+          <path d="M2,22 Q10,22 10,30 Q10,22 2,30 Z"/>
+          <path d="M12,22 Q20,22 20,30 Q20,22 12,30 Z"/>
+          <path d="M22,22 Q30,22 30,30 Q30,22 22,30 Z"/>
+        </svg>
+        <span>Daun</span>
+      </div>
+
+      <div class="shape-opt" data-shape="heart">
+        <svg viewBox="0 0 32 32" fill="var(--accent)">
+          <path d="M6,3 C4,3 2,5 2,7 C2,10 6,13 6,13 C6,13 10,10 10,7 C10,5 8,3 6,3Z"/>
+          <path d="M16,3 C14,3 12,5 12,7 C12,10 16,13 16,13 C16,13 20,10 20,7 C20,5 18,3 16,3Z"/>
+          <path d="M26,3 C24,3 22,5 22,7 C22,10 26,13 26,13 C26,13 30,10 30,7 C30,5 28,3 26,3Z"/>
+          <path d="M6,19 C4,19 2,21 2,23 C2,26 6,29 6,29 C6,29 10,26 10,23 C10,21 8,19 6,19Z"/>
+          <path d="M26,19 C24,19 22,21 22,23 C22,26 26,29 26,29 C26,29 30,26 30,23 C30,21 28,19 26,19Z"/>
+        </svg>
+        <span>Love ♥</span>
+      </div>
+
+    </div>
+    <div class="shape-hint" id="shapeHint">
+      <strong>Kotak</strong> — modul QR berbentuk persegi tajam
+    </div>
+  </div>
+
+  <div class="color-row">
+    <div class="color-field">
+      <label>Warna QR</label>
+      <div class="color-input-wrap">
+        <input type="color" id="colorFg" value="#000000" oninput="syncHex('colorFg','hexFg')">
+        <input type="text" class="color-hex" id="hexFg" value="#000000" maxlength="7" oninput="syncColor('hexFg','colorFg')">
+      </div>
+    </div>
+    <div class="color-field">
+      <label>Warna latar</label>
+      <div class="color-input-wrap">
+        <input type="color" id="colorBg" value="#ffffff" oninput="syncHex('colorBg','hexBg')">
+        <input type="text" class="color-hex" id="hexBg" value="#ffffff" maxlength="7" oninput="syncColor('hexBg','colorBg')">
+      </div>
+    </div>
+  </div>
+
+  <button class="btn" onclick="generateQR()">Generate QR</button>
+
+  <div class="divider"></div>
+
+  <div class="qr-output" id="qrOutput">
+    <div class="qr-canvas-wrap">
+      <canvas id="qrCanvas"></canvas>
+    </div>
+    <span class="qr-label" id="qrLabel"></span>
+    <button class="download-btn" onclick="downloadQR()">↓ Download PNG</button>
+  </div>
+</div>
+
+<!-- Hidden container buat QRCode.js generate matrix -->
+<div id="qrHidden" style="position:absolute;left:-9999px;visibility:hidden;"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
