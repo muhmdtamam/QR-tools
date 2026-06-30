@@ -2,28 +2,24 @@
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const navMenu      = document.getElementById('navMenu');
 const navOverlay   = document.getElementById('navOverlay');
-const navCloseBtn  = document.getElementById('navCloseBtn');
 
 function openNav() {
   navMenu.classList.add('active');
   navOverlay.classList.add('active');
   hamburgerBtn.classList.add('active');
   hamburgerBtn.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden';
 }
 function closeNav() {
   navMenu.classList.remove('active');
   navOverlay.classList.remove('active');
   hamburgerBtn.classList.remove('active');
   hamburgerBtn.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
 }
 hamburgerBtn.addEventListener('click', () => {
   if (navMenu.classList.contains('active')) closeNav();
   else openNav();
 });
 navOverlay.addEventListener('click', closeNav);
-navCloseBtn.addEventListener('click', closeNav);
 
 let selectedShape = 'square';
 
